@@ -292,7 +292,7 @@ int *copiarVetor(int origem[], int n) {
  * ---------------------------------------------------------------------------- */
 
 /*
- * buscaSequencial                                               [ ] A FAZER
+ * buscaSequencial                                               [X] FEITO
  * Dificuldade: facil
  *
  * O que faz: procura a chave olhando os elementos um por um, do primeiro
@@ -317,14 +317,20 @@ int *copiarVetor(int origem[], int n) {
  * Retorno: a posicao da chave; NAO_ENCONTRADO se nao achou.
  * Chamada por: opcaoBuscar.
  */
-int buscaSequencial(int v[], int n, int chave, int *comparacoes) {
-    /* TODO: implementar */
-    (void) v;
-    (void) n;
-    (void) chave;
-    *comparacoes = 0;
-    return NAO_ENCONTRADO;
-}
+int buscaSequencial(int v[], int n, int chave, int *comparacoes) { 
+    int i;
+
+    *comparacoes = 0; 
+
+    for (i = 0; i < n; i++) {
+        (*comparacoes)++;
+        if (v[i] == chave) {
+            return i;
+        }
+    }
+
+    return NAO_ENCONTRADO; 
+} 
 
 /*
  * buscaBinaria                                                  [ ] A FAZER
