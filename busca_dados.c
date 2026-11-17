@@ -75,10 +75,6 @@ void imprimirResultado(int numero, int posicao, int compSequencial, int compBina
 void opcaoBuscar(void);
 
 
-/* ============================================================================
- *  4. MAIN                                                       [x] PRONTA
- *     So o laco do menu. A busca toda fica na opcaoBuscar.
- * ============================================================================ */
 int main(void) {
     int opcao;
 
@@ -252,7 +248,7 @@ int *criarVetorAleatorio(int n) {
 }
 
 /*
- * copiarVetor                                                   [ ] A FAZER
+ * copiarVetor                                                   [X] FEITO
  * Dificuldade: facil
  *
  * O que faz: cria um vetor NOVO, do mesmo tamanho, com os mesmos valores.
@@ -272,12 +268,20 @@ int *criarVetorAleatorio(int n) {
  * Retorno: o endereco da copia; NULL se faltou memoria.
  * Chamada por: opcaoBuscar.
  */
-int *copiarVetor(int origem[], int n) {
-    /* TODO: implementar */
-    (void) origem;
-    (void) n;
-    return NULL;
-}
+int *copiarVetor(int origem[], int n) { 
+    int *copia, i;
+
+    copia = (int *) malloc(n * sizeof(int));
+    if (copia == NULL) {
+        return NULL;
+    }
+
+    for (i = 0; i < n; i++) {
+        copia[i] = origem[i];
+    }
+
+    return copia;
+} 
 
 
 /* ----------------------------------------------------------------------------
