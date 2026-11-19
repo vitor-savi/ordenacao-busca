@@ -226,7 +226,7 @@ void imprimirVetor(char titulo[], int v[], int n) {
  * ---------------------------------------------------------------------------- */
 
 /*
- * criarVetorAleatorio                                           [ ] A FAZER
+ * criarVetorAleatorio                                           [X] FEITO
  * Dificuldade: facil
  *
  * O que faz: aloca um vetor de n inteiros e preenche com numeros sorteados
@@ -241,11 +241,20 @@ void imprimirVetor(char titulo[], int v[], int n) {
  * Retorno: o endereco do vetor criado; NULL se faltou memoria.
  * Chamada por: opcaoBuscar.
  */
-int *criarVetorAleatorio(int n) {
-    /* TODO: implementar */
-    (void) n;
-    return NULL;
-}
+int *criarVetorAleatorio(int n) { 
+    int *v, i;
+
+    v = (int *) malloc(n * sizeof(int));
+    if (v == NULL) {
+        return NULL;
+    }
+
+    for (i = 0; i < n; i++) {
+        v[i] = numeroAleatorio(VALOR_MINIMO, VALOR_MAXIMO);
+    }
+
+    return v;
+} 
 
 /*
  * copiarVetor                                                   [X] FEITO
