@@ -329,7 +329,7 @@ void opcaoBuscar(void) {
     }
 
     ordenarVetor(ordenado, n);
-    // so aparecem se n <= LIMITE_IMPRESSAO
+    /* so aparecem se n <= LIMITE_IMPRESSAO */
     imprimirVetor("Vetor original", original, n);
     imprimirVetor("Vetor ordenado", ordenado, n);
 
