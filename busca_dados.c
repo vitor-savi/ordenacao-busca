@@ -405,7 +405,7 @@ int buscaBinaria(int v[], int n, int chave, int *comparacoes) {
  * ---------------------------------------------------------------------------- */
 
 /*
- * imprimirResultado                                             [ ] A FAZER
+ * imprimirResultado                                             [X] FEITO
  * Dificuldade: facil
  *
  * O que faz: mostra o resultado de UM numero buscado.
@@ -426,13 +426,17 @@ int buscaBinaria(int v[], int n, int chave, int *comparacoes) {
  *
  * Chamada por: opcaoBuscar.
  */
-void imprimirResultado(int numero, int posicao, int compSequencial, int compBinaria) {
-    /* TODO: implementar */
-    (void) numero;
-    (void) posicao;
-    (void) compSequencial;
-    (void) compBinaria;
-}
+void imprimirResultado(int numero, int posicao, int compSequencial, int compBinaria) { 
+    if (posicao != NAO_ENCONTRADO) {
+        printf("\nNumero %d: encontra-se no conjunto de dados.\n", numero);
+    }
+    else {
+        printf("\nNumero %d: nao encontra-se no conjunto de dados.\n", numero);
+    }
+
+    printf("  Comparacoes na busca sequencial: %d\n", compSequencial);
+    printf("  Comparacoes na busca binaria:    %d\n", compBinaria);
+} 
 
 /*
  * opcaoBuscar                                                   [ ] A FAZER
