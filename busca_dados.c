@@ -342,7 +342,7 @@ int buscaSequencial(int v[], int n, int chave, int *comparacoes) {
 } 
 
 /*
- * buscaBinaria                                                  [ ] A FAZER
+ * buscaBinaria                                                  [X] FEITO
  * Dificuldade: media
  *
  * O que faz: procura a chave num vetor ORDENADO, sempre olhando o meio
@@ -371,14 +371,33 @@ int buscaSequencial(int v[], int n, int chave, int *comparacoes) {
  *          achou.
  * Chamada por: opcaoBuscar.
  */
-int buscaBinaria(int v[], int n, int chave, int *comparacoes) {
-    /* TODO: implementar */
-    (void) v;
-    (void) n;
-    (void) chave;
-    *comparacoes = 0;
-    return NAO_ENCONTRADO;
-}
+int buscaBinaria(int v[], int n, int chave, int *comparacoes) { 
+    int inicio = 0;
+    int fim = n - 1;
+    int meio;
+
+    *comparacoes = 0; 
+
+    while (inicio <= fim) {
+        meio = (inicio + fim) / 2;
+        
+        (*comparacoes)++;
+        if (v[meio] == chave) {
+            return meio;
+        }
+
+        (*comparacoes)++;
+        if (chave < v[meio]) {
+            fim = meio - 1;
+        }
+        else {
+            inicio = meio + 1;
+        }
+    }
+
+    return NAO_ENCONTRADO; 
+    
+} 
 
 
 /* ----------------------------------------------------------------------------
