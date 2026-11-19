@@ -439,7 +439,7 @@ void imprimirResultado(int numero, int posicao, int compSequencial, int compBina
 } 
 
 /*
- * opcaoBuscar                                                   [ ] A FAZER
+ * opcaoBuscar                                                   [X] FEITO
  * Dificuldade: media
  *
  * O que faz: o fluxo inteiro da parte 2 do enunciado.
@@ -479,7 +479,50 @@ void imprimirResultado(int numero, int posicao, int compSequencial, int compBina
  *
  * Chamada por: main (opcao 1).
  */
-void opcaoBuscar(void) {
-    /* TODO: implementar */
-    printf("[opcaoBuscar ainda nao implementada]\n");
-}
+void opcaoBuscar(void) { 
+    int n, i;
+    int *original, *ordenado;
+    int numeros[QTD_BUSCAS];
+    int posicao, compSequencial, compBinaria;
+    char mensagem[40];
+
+    n = lerInteiro("\nDigite a quantidade de elementos do conjunto: ");
+    if (n <= 0) {
+        printf("A quantidade deve ser maior que zero.\n");
+        return;
+    }
+
+    original = criarVetorAleatorio(n);
+    if (original == NULL) {
+        printf("Memoria insuficiente!!\n");
+        return;
+    }
+
+    ordenado = copiarVetor(original, n);
+    if (ordenado == NULL) {
+        free(original);
+        printf("Memoria insuficiente!!\n");
+        return;
+    }
+
+    ordenarVetor(ordenado, n);
+    // so aparecem se n <= LIMITE_IMPRESSAO
+    imprimirVetor("Vetor original", original, n);
+    imprimirVetor("Vetor ordenado", ordenado, n);
+
+    for (i = 0; i < QTD_BUSCAS; i++) {
+        sprintf(mensagem, "%do numero a buscar: ", i + 1);
+        numeros[i] = lerInteiro(mensagem);
+    }
+
+    printf("\n===== RESULTADO =====\n");
+    for (i = 0; i < QTD_BUSCAS; i++) {
+        posicao = buscaSequencial(original, n, numeros[i], &compSequencial);
+        buscaBinaria(ordenado, n, numeros[i], &compBinaria);
+        imprimirResultado(numeros[i], posicao, compSequencial, compBinaria);
+    }
+
+    free(original);
+    free(ordenado);
+
+} 
